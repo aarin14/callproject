@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helpdesk AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Minimal CSS for flip card and static dark background */
+    body {
+      background: linear-gradient(135deg, #1f2937, #374151);
+    }
+    .flip-card {
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+    /* Typewriter cursor */
+    .typewriter-text::after {
+      content: "|";
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="text-gray-100 bg-gray-900 transition-colors duration-500">
+  <!-- Header -->
+  <header class="flex justify-between items-center p-6 md:px-20 bg-transparent">
+    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-200">📞 Helpdesk AI</h1>
+    <div class="flex items-center gap-4">
+      <a href="login.php" class="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700 transition transform hover:scale-105">Login</a>
+      <a href="register.php" class="px-4 py-2 text-sm font-medium bg-gray-700 text-white border border-gray-600 rounded hover:bg-gray-800 transition transform hover:scale-105">Register</a>
+    </div>
+  </header>
+
+  <!-- Main Section -->
+  <main class="flex flex-col items-center justify-center text-center py-24 px-6 bg-transparent relative">
+    <h2 class="text-4xl sm:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent typewriter-text" id="typewriter"></h2>
+    <p class="max-w-2xl text-lg text-gray-300 mb-10">
+      Upload your helpdesk call recordings and let AI instantly analyze the sentiment and performance insights.
+    </p>
+    <a href="#features" class="px-6 py-3 text-lg bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">Explore Features ↓</a>
+  </main>
+
+  <!-- White Mode Sections -->
+  <div class="bg-white text-gray-800">
+    <!-- Live Sentiment Analysis Demo -->
+    <section id="demo" class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Try Live Sentiment Analysis</h2>
+        <p class="text-gray-600 mb-8">Type a sample call transcript and see AI analyze its sentiment in real-time.</p>
+        <div class="flex flex-col items-center gap-4">
+          <textarea id="sentimentInput" class="w-full max-w-lg p-4 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500" rows="4" placeholder="e.g., 'Thank you so much for your help!'"></textarea>
+          <button id="analyzeBtn" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Analyze</button>
+          <p id="sentimentResult" class="text-lg font-medium text-gray-700"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
+        <div class="flip-card h-64">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gray-50 shadow rounded-xl p-6 flex flex-col items-center">
+              <div class="text-5xl mb-2">🎧</div>
+              <h3 class="font-bold text-xl mb-1">Upload Calls</h3>
+              <p class="text-gray-500">Easily upload recorded customer calls in MP3, WAV, or M4A formats.</p>
+            </div>
+            <div class="flip-card-back bg-gradient-to-b from-blue-500 to-cyan-500 text-white rounded-xl p-6 flex flex-col items-center justify-center">
+              <p class="text-sm">Supports multiple formats and batch uploads for seamless integration.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card h-64">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gray-50 shadow rounded-xl p-6 flex flex-col items-center">
+              <div class="text-5xl mb-2">🧠</div>
+              <h3 class="font-bold text-xl mb-1">AI Analysis</h3>
+              <p class="text-gray-500">Get instant sentiment classification with AI-powered insights.</p>
+            </div>
+            <div class="flip-card-back bg-gradient-to-b from-blue-500 to-cyan-500 text-white rounded-xl p-6 flex flex-col items-center justify-center">
+              <p class="text-sm">Leverages advanced NLP to detect emotions and trends in real-time.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card h-64">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gray-50 shadow rounded-xl p-6 flex flex-col items-center">
+              <div class="text-5xl mb-2">📊</div>
+              <h3 class="font-bold text-xl mb-1">Call History</h3>
+              <p class="text-gray-500">View and search historical call transcripts and their sentiments.</p>
+            </div>
+            <div class="flip-card-back bg-gradient-to-b from-blue-500 to-cyan-500 text-white rounded-xl p-6 flex flex-col items-center justify-center">
+              <p class="text-sm">Filter and export call data for detailed performance reports.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Our Impact</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+          <div>
+            <p class="text-4xl font-bold text-blue-600 counter" data-target="10000">0</p>
+            <p class="text-gray-600">Calls Analyzed</p>
+          </div>
+          <div>
+            <p class="text-4xl font-bold text-blue-600 counter" data-target="95">0</p>
+            <p class="text-gray-600">Accuracy Rate</p>
+          </div>
+          <div>
+            <p class="text-4xl font-bold text-blue-600 counter" data-target="500">0</p>
+            <p class="text-gray-600">Happy Clients</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-sm text-gray-500">
+      <p>© 2025 Helpdesk AI. Made with ❤️ for customer support teams.</p>
+      <button id="contactBtn" class="mt-4 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700 transition">Contact Us</button>
+    </footer>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-lg max-w-md w-full relative">
+      <span id="closeModal" class="absolute top-4 right-4 text-2xl cursor-pointer text-gray-600">×</span>
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">Contact Us</h2>
+      <form id="contactForm">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" id="name" class="w-full p-2 rounded border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" class="w-full p-2 rounded border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" class="w-full p-2 rounded border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Typewriter Animation
+    const texts = ["AI-powered Helpdesk", "Real-time Sentiment Analysis", "Smarter Call Review"];
+    let i = 0, j = 0, currentText = '', isDeleting = false;
+    const typewriter = document.getElementById("typewriter");
+    function type() {
+      currentText = texts[i];
+      typewriter.innerHTML = currentText.substring(0, j);
+      if (!isDeleting) {
+        if (j < currentText.length) {
+          j++;
+          setTimeout(type, 100);
+        } else {
+          isDeleting = true;
+          setTimeout(type, 1500);
+        }
+      } else {
+        if (j > 0) {
+          j--;
+          setTimeout(type, 50);
+        } else {
+          isDeleting = false;
+          i = (i + 1) % texts.length;
+          setTimeout(type, 500);
+        }
+      }
+    }
+    type();
+
+    // Sentiment Analysis Demo
+    const sentimentInput = document.getElementById('sentimentInput');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const sentimentResult = document.getElementById('sentimentResult');
+    analyzeBtn.addEventListener('click', () => {
+      const text = sentimentInput.value.trim();
+      if (!text) {
+        sentimentResult.textContent = 'Please enter a transcript.';
+        sentimentResult.className = 'text-lg font-medium text-red-500';
+        return;
+      }
+      // Mock sentiment analysis
+      const sentiment = text.toLowerCase().includes('thank') || text.toLowerCase().includes('great') ? 'Positive 😊' :
+                       text.toLowerCase().includes('upset') || text.toLowerCase().includes('bad') ? 'Negative 😔' : 'Neutral 😐';
+      sentimentResult.textContent = `Sentiment: ${sentiment}`;
+      sentimentResult.className = `text-lg font-medium ${sentiment.includes('Positive') ? 'text-green-500' : sentiment.includes('Negative') ? 'text-red-500' : 'text-yellow-500'}`;
+    });
+
+    // Stats Counter
+    const counters = document.querySelectorAll('.counter');
+    const animateCounter = (el, target) => {
+      let count = 0;
+      const step = () => {
+        if (count < target) {
+          count += Math.ceil(target / 50);
+          el.textContent = count > target ? target : count;
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+        }
+      };
+      step();
+    };
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          counters.forEach(counter => {
+            if (!counter.classList.contains('counted')) {
+              counter.classList.add('counted');
+              animateCounter(counter, parseInt(counter.dataset.target));
+            }
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(document.getElementById('stats'));
+
+    // Contact Modal
+    const contactBtn = document.getElementById('contactBtn');
+    const contactModal = document.getElementById('contactModal');
+    const closeModal = document.getElementById('closeModal');
+    const contactForm = document.getElementById('contactForm');
+    contactBtn.addEventListener('click', () => contactModal.classList.remove('hidden'));
+    closeModal.addEventListener('click', () => contactModal.classList.add('hidden'));
+    contactModal.addEventListener('click', e => { if (e.target === contactModal) contactModal.classList.add('hidden'); });
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you for your message! We’ll get back to you soon.');
+      contactForm.reset();
+      contactModal.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
